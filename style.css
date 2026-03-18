@@ -1,0 +1,33 @@
+h1 {
+  text-align: center;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.Dashbored {
+  list-style: none;
+  display: flex;
+  justify-content: right;
+  gap: 20px;
+  padding-right: 20px;
+  margin: 20px;
+}
+.discription {
+  display: flex;
+  justify-content: center;
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 18px;
+  font-family: "Times New Roman", Times, serif;
+  color: pink;
+}
+
+.search {
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.searchCategory {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
