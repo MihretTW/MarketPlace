@@ -1,6 +1,15 @@
+body {
+  font-size: 18px;
+  background-color: black;
+  color: white;
+}
+
 h1 {
   text-align: center;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+
+  color: rgb(235, 24, 179);
+  font-size: 36px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 .Dashbored {
   list-style: none;
@@ -9,25 +18,89 @@ h1 {
   gap: 20px;
   padding-right: 20px;
   margin: 20px;
+  font-size: 18px;
 }
 .discription {
   display: flex;
   justify-content: center;
-  width: 400px;
+  width: 70%;
   margin: 0 auto;
   text-align: center;
-  font-size: 18px;
   font-family: "Times New Roman", Times, serif;
-  color: pink;
-}
-
-.search {
-  padding: 20px;
-  border-radius: 5px;
 }
 
 .searchCategory {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.search {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.search input {
+  flex: 1;
+  margin: 20px;
+  padding: 20px;
+  font-size: 16pxpx;
+  border-radius: 10px;
+  background-color: rgba(143, 103, 242, 0.2);
+  color: rgba(12, 247, 55, 0.817);
+}
+
+.search button {
+  margin: 20px;
+  padding: 20px;
+  font-size: 16px;
+  background-color: rgba(143, 103, 242, 0.2);
+  color: rgba(12, 247, 55, 0.817);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.searchCategory {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem; /* optional spacing */
+}
+
+.card img {
+  text-align: center;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 10px;
+   background-color: rgba(143, 103, 242, 0.1);
+}
+
+.card img{
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.cards {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 20px;
+  padding: 20px;
+  s
+}
+
+p {
+  background-color: rgba(143, 103, 242, 0.2);
+  color: rgba(12, 247, 55, 0.817);
+}
+
+#Catagory {
+  background-color: rgba(143, 103, 242, 0.2);
+  color: rgba(12, 247, 55, 0.817);
+  padding: 10px;
+  border-radius: 10px;
 }
