@@ -14,7 +14,7 @@ body {
 }
 
 /* Title */
-h1 {
+.name-of-site {
   text-align: center;
   color: #ff4ecd;
   font-size: 40px;

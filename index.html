@@ -7,16 +7,8 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Market Place</h1>
+   <div id="navbar"></div>
 
-    <div>
-      <ul class="Dashbored">
-        <a href="">Home</a>
-        <a href="">About Us</a>
-        <a href="">Services</a>
-        <a href="">Post</a>
-        
-      </ul>
 
       <p class="discription">
         Welcome to your new favorite marketplace. Buy what you need. Sell what
@@ -98,5 +90,14 @@
         <p>Discription</p>
       </div>
     </div>
+
+
+    <script>
+  fetch("navbar.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("navbar").innerHTML = data;
+    });
+</script>
   </body>
 </html>

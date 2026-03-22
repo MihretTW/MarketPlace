@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post page</title>
+    <link rel="stylesheet" href="post.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="navbar"></div>
+
+    <h1 class="title-for-the-post-page">Post an Item</h1>
+
+    <form class="post-form">
+      <label>Item name:</label>
+      <input type="text" placeholder="Enter name" />
+
+      <label>Price</label>
+      <input
+        type="number"
+        step="0.01"
+        min="0"
+        placeholder="Enter price in birr"
+      />
+
+      <label>Description:</label>
+      <textarea placeholder="Enter description"></textarea>
+
+      <label>Upload image:</label>
+      <input type="file" accept="image/*" />
+
+      <button type="submit">Post</button>
+    </form>
+
+    <script>
+      fetch("navbar.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+        });
+    </script>
+  </body>
+</html>

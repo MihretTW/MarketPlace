@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Item page</title>
     <link rel="stylesheet" href="item-style.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div id="navbar"></div>
+
     <div class="item-Seller">
       <section class="item">
         <img
@@ -50,5 +53,13 @@
         <p>Nice quality</p>
       </div>
     </section>
+
+    <script>
+      fetch("navbar.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+        });
+    </script>
   </body>
 </html>

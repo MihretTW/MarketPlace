@@ -1,0 +1,47 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+.title-for-the-post-page {
+  padding: 20px;
+  margin: 20px;
+  color: rgba(8, 187, 8, 0.914);
+}
+.post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 20px;
+  padding: 20px;
+  background-color: rgb(31, 30, 30);
+  border-radius: 10px;
+}
+
+.post-form input,
+.post-form textarea {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+}
+.post-form textarea {
+  height: 100px;
+}
+.post-form button {
+  width: 120px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgb(33, 7, 57);
+  color: white;
+}
+
+.post-form input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.post-form input[type="number"]::-webkit-outer-spin-button,
+.post-form input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
