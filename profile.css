@@ -1,0 +1,26 @@
+.seller-img {
+  margin: 20px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info {
+  margin: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: rgb(31, 30, 30);
+  border-radius: 5px;
+}
+
+button {
+  width: 200px;
+  padding: 15px;
+  font-size: 19px;
+  border-radius: 10px;
+  background-color: rgb(33, 7, 57);
+  color: white;
+}

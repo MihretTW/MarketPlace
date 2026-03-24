@@ -8,7 +8,7 @@
 /* Body */
 body {
   font-size: 18px;
-  background: linear-gradient(to right, #0f0f0f, #1a1a2e);
+  background: black;
   color: #eaeaea;
   font-family: Arial, sans-serif;
 }
@@ -41,7 +41,7 @@ body {
 }
 
 /* Description box */
-.discription {
+.site-discription {
   display: flex;
   justify-content: center;
   padding: 30px;
@@ -134,4 +134,16 @@ body {
 /* Links */
 a {
   color: #8fd3f4;
+}
+.card-Discription {
+  font-size: 18px;
+}
+
+#detail-btn {
+  margin: 15px;
+  padding: 15px;
+  font-size: 19px;
+  border-radius: 10px;
+  background-color: rgb(56, 12, 98);
+  color: white;
 }
