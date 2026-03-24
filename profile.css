@@ -24,3 +24,7 @@ button {
   background-color: rgb(33, 7, 57);
   color: white;
 }
+
+button:hover {
+  background-color: rgb(54, 9, 96);
+}

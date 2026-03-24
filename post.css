@@ -45,3 +45,15 @@ body {
   -webkit-appearance: none;
   margin: 0;
 }
+
+select {
+  padding: 10px;
+  border-radius: 8px;
+  background-color: black;
+  color: white;
+  border: none;
+}
+
+button:hover {
+  background-color: rgb(54, 9, 96);
+}
