@@ -22,12 +22,18 @@ body {
 }
 
 /* Navbar */
-.Dashbored {
-  list-style: none;
+.Dashboard {
   display: flex;
-  justify-content: flex-end;
-  gap: 25px;
-  padding: 20px;
+  justify-content: flex-end; /* 🔥 pushes everything to the right */
+  align-items: center;
+  gap: 30px;
+  list-style: none;
+  padding: 0;
+  margin-right: 30px;
+}
+
+.Dashboard li {
+  display: inline;
 }
 
 .Dashbored li a {
