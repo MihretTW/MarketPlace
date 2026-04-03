@@ -1,0 +1,53 @@
+.forms {
+  width: 300px;
+  margin: 90px auto;
+
+  text-align: center;
+  background-color: rgb(30, 27, 27);
+  color: white;
+  width: 440px;
+}
+#signin-form {
+  display: flex;
+  flex-direction: column;
+
+  padding: 20px;
+  gap: 20px;
+  border-radius: 10px;
+  padding-top: 40px;
+  height: 360px;
+}
+
+#signup-form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+  border-radius: 10px;
+  height: 420px;
+}
+p {
+  padding-bottom: 30px;
+}
+input {
+  background-color: rgb(54, 45, 45);
+  height: 40px;
+}
+button {
+  background-color: rgb(33, 7, 57);
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 20px;
+}
+
+button:hover {
+  background-color: rgb(54, 9, 96);
+}
+
+label {
+  text-align: left;
+  padding-left: 10px;
+}
