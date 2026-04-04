@@ -32,5 +32,15 @@
           document.getElementById("navbar").innerHTML = data;
         });
     </script>
+
+    <script src="js/auth.js"></script>
+    <script>
+      document.querySelector("form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const email = document.querySelector('[name="email"]').value;
+        const password = document.querySelector('[name="password"]').value;
+        handleSignin(email, password);
+      });
+    </script>
   </body>
 </html>
