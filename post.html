@@ -12,43 +12,57 @@
 
     <h1 class="title-for-the-post-page">Post an Item</h1>
 
-    <form id="post-form">
-      <label>Item name:</label>
-      <input type="text" name="item-name" placeholder="Enter name" />
+    <!-- post.html -->
+    <form id="postForm" enctype="multipart/form-data">
+      <input type="text" name="name" placeholder="Item name *" required />
 
-      <label> Item type</label>
-      <select name="type">
+      <input
+        type="number"
+        name="price"
+        step="0.01"
+        placeholder="Price *"
+        required
+      />
+
+      <select name="category">
         <option value="electronics">Electronics</option>
         <option value="clothes">Clothes</option>
         <option value="books">Books</option>
         <option value="jewelries">Jewelries</option>
+        <option value="general">Other</option>
       </select>
 
-      <label>Price</label>
-      <input
-        type="number"
-        step="0.01"
-        min="0"
-        name="price"
-        placeholder="Enter price in birr"
-      />
+      <textarea name="description" placeholder="Description"></textarea>
 
-      <label>Description:</label>
-      <textarea name="description" placeholder="Enter description"></textarea>
+      <!-- MULTIPLE IMAGE UPLOAD -->
+      <div class="form-group">
+        <label>Upload Images (Max 5):</label>
+        <input
+          type="file"
+          name="images[]"
+          id="imageInput"
+          multiple
+          accept="image/*"
+          max="5"
+        />
+        <small>Hold Ctrl/Cmd to select multiple images</small>
+        <div id="imagePreview" style="margin-top: 10px"></div>
+      </div>
 
-      <label>Upload image:</label>
-      <input type="file" accept="image/*" />
+      <!-- OR use image URLs -->
+      <div class="form-group">
+        <label>Or enter image URLs (one per line):</label>
+        <textarea
+          name="image_urls"
+          rows="3"
+          placeholder="https://example.com/image1.jpg&#10;https://example.com/image2.jpg"
+        ></textarea>
+      </div>
 
-      <button type="submit">Post</button>
+      <button type="submit">Post Item 🚀</button>
     </form>
 
-    <script>
-      fetch("navbar.html")
-        .then((res) => res.text())
-        .then((data) => {
-          document.getElementById("navbar").innerHTML = data;
-        });
-    </script>
+    <script src="js/auth.js"></script>
     <script src="js/post.js"></script>
   </body>
 </html>

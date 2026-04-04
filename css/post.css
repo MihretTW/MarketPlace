@@ -8,7 +8,7 @@ body {
   margin: 20px;
   color: rgba(8, 187, 8, 0.914);
 }
-#post-form {
+#postForm {
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -18,17 +18,17 @@ body {
   border-radius: 10px;
 }
 
-#post-form input,
-#post-form textarea {
+#postForm input,
+#postForm textarea {
   padding: 10px;
   border-radius: 10px;
   background-color: black;
   color: white;
 }
-#post-form textarea {
+#postForm textarea {
   height: 100px;
 }
-#post-form button {
+#postForm button {
   width: 120px;
   padding: 10px;
   border-radius: 10px;
@@ -36,12 +36,12 @@ body {
   color: white;
 }
 
-#post-form input[type="number"] {
+#postForm input[type="number"] {
   -moz-appearance: textfield;
 }
 
-#post-form input[type="number"]::-webkit-outer-spin-button,
-#post-form input[type="number"]::-webkit-inner-spin-button {
+#postForm input[type="number"]::-webkit-outer-spin-button,
+#postForm input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
