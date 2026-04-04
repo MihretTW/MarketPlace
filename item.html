@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <div id="navbar"></div>
+    <div id="navbar-placeholder"></div>
 
     <h1></h1>
 
@@ -57,11 +57,13 @@
     </section>
 
     <script>
+      // Load the navbar
       fetch("navbar.html")
-        .then((res) => res.text())
+        .then((response) => response.text())
         .then((data) => {
-          document.getElementById("navbar").innerHTML = data;
-        });
+          document.getElementById("navbar-placeholder").innerHTML = data;
+        })
+        .catch((error) => console.log("Navbar load error:", error));
     </script>
   </body>
 </html>
