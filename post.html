@@ -12,12 +12,12 @@
 
     <h1 class="title-for-the-post-page">Post an Item</h1>
 
-    <form class="post-form">
+    <form id="post-form">
       <label>Item name:</label>
-      <input type="text" placeholder="Enter name" />
+      <input type="text" name="item-name" placeholder="Enter name" />
 
       <label> Item type</label>
-      <select name="Item type">
+      <select name="type">
         <option value="electronics">Electronics</option>
         <option value="clothes">Clothes</option>
         <option value="books">Books</option>
@@ -29,11 +29,12 @@
         type="number"
         step="0.01"
         min="0"
+        name="price"
         placeholder="Enter price in birr"
       />
 
       <label>Description:</label>
-      <textarea placeholder="Enter description"></textarea>
+      <textarea name="description" placeholder="Enter description"></textarea>
 
       <label>Upload image:</label>
       <input type="file" accept="image/*" />
@@ -48,5 +49,6 @@
           document.getElementById("navbar").innerHTML = data;
         });
     </script>
+    <script src="js/post.js"></script>
   </body>
 </html>
