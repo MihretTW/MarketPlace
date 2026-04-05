@@ -7,87 +7,30 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <!-- Navbar -->
+    <!-- Navbar will be loaded here by JS -->
     <div id="navbar-placeholder"></div>
 
-    <h1 style="text-align: center; margin: 30px 0; color: #ff4ecd">
-      Welcome to your new favorite marketplace
-    </h1>
-    <p
-      style="
-        text-align: center;
-        max-width: 800px;
-        margin: 0 auto 30px;
-        font-size: 18px;
-      "
-    >
+    <h1 class="welcome-title">Welcome to your new favorite marketplace</h1>
+
+    <p class="welcome-text">
       Buy what you need. Sell what you don’t. It’s that simple.
     </p>
 
-    <!-- Search -->
-    <div class="searchCategory" style="justify-content: center; margin: 20px 0">
+    <!-- Search Bar -->
+    <div class="searchCategory">
       <div class="search">
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="Search items..."
-          style="width: 400px"
-        />
+        <input type="text" id="searchInput" placeholder="Search items..." />
         <button onclick="searchItems()">Search</button>
       </div>
     </div>
 
     <!-- Items Grid -->
     <div class="cards" id="itemsContainer">
-      <!-- Items will appear here -->
+      <!-- Items will be loaded by index.js -->
     </div>
 
-    <script>
-      const items = [
-        { title: "Laptop", price: 30000, link: "item.html" },
-        { title: "Book", price: 300, link: "item.html" },
-        { title: "Tshirt", price: 1000, link: "item.html" },
-        { title: "Dress", price: 3000, link: "item.html" },
-        { title: "Necklace", price: 3000, link: "item.html" },
-        { title: "Samsung", price: 15000, link: "item.html" },
-        { title: "Chair", price: 1500, link: "item.html" },
-      ];
-
-      function displayItems(filteredItems) {
-        const container = document.getElementById("itemsContainer");
-        container.innerHTML = "";
-        filteredItems.forEach((item) => {
-          const card = document.createElement("div");
-          card.className = "card";
-          card.innerHTML = `
-                    <h3 style="padding:10px; margin:0; color:#ff4ecd;">${item.title}</h3>
-                    <p style="padding:0 10px;">Price: ${item.price} ETB</p>
-                    <a href="${item.link}" style="margin:15px; display:inline-block; background:rgb(56,12,98); color:white; padding:12px 20px; border-radius:10px; text-decoration:none;">Detail</a>
-                `;
-          container.appendChild(card);
-        });
-      }
-
-      function searchItems() {
-        const term = document.getElementById("searchInput").value.toLowerCase();
-        const filtered = items.filter((item) =>
-          item.title.toLowerCase().includes(term),
-        );
-        displayItems(filtered.length ? filtered : items);
-      }
-
-      // Show all items when page loads
-      window.onload = () => displayItems(items);
-    </script>
-
-    <script>
-      // Load the navbar
-      fetch("navbar.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("navbar-placeholder").innerHTML = data;
-        })
-        .catch((error) => console.log("Navbar load error:", error));
-    </script>
+    <!-- All JavaScript files loaded at the bottom -->
+    <script src="js/navbar.js"></script>
+    <script src="js/index.js"></script>
   </body>
 </html>

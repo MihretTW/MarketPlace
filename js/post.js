@@ -1,61 +1,39 @@
-// js/post.js - Simple item posting
+// js/post.js - Handle posting item with image
 
-// Get current user from localStorage (set during signin)
-function getCurrentUser() {
-  const user = localStorage.getItem("user");
-  return user ? JSON.parse(user) : null;
-}
-
-// Post item to backend
-async function postItem(itemData) {
-  try {
-    const response = await fetch("php/add_item.php", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(itemData),
-    });
-
-    const result = await response.json();
-
-    if (result.status === "success") {
-      alert("✅ " + result.message);
-      window.location.href = "index.html"; // Redirect to homepage
-    } else {
-      alert("❌ " + result.message);
-    }
-
-    return result;
-  } catch (error) {
-    console.error("Error:", error);
-    alert("❌ Connection failed. Please try again.");
-    return { status: "error", message: "Network error" };
-  }
-}
-
-// Handle form submission
-function setupPostForm() {
-  const form = document.querySelector("form");
-  if (!form) return;
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("postForm");
+  const messageDiv = document.getElementById("message");
 
   form.addEventListener("submit", function (e) {
-    e.preventDefault(); // Stop page reload
+    e.preventDefault();
 
-    // Get form values
-    const itemData = {
-      user_id: getCurrentUser()?.id || 1, // Fallback for testing
-      name: document.querySelector('[name="name"]').value,
-      price: parseFloat(document.querySelector('[name="price"]').value),
-      description: document.querySelector('[name="description"]').value,
-      category: document.querySelector('[name="category"]').value,
-      image_url: document.querySelector('[name="image_url"]').value || "",
-    };
+    const formData = new FormData(form);
 
-    // Send to backend
-    postItem(itemData);
+    fetch("php/add_item.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === "success") {
+          showMessage("Item posted successfully! 🎉", "success");
+          form.reset();
+        } else {
+          showMessage(data.message || "Failed to post item", "error");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        showMessage("Something went wrong. Check your image size.", "error");
+      });
   });
-}
 
-// Run when page loads
-document.addEventListener("DOMContentLoaded", setupPostForm);
+  function showMessage(text, type) {
+    messageDiv.textContent = text;
+    messageDiv.className = `message ${type}`;
+    setTimeout(() => {
+      messageDiv.textContent = "";
+      messageDiv.className = "message";
+    }, 5000);
+  }
+});
