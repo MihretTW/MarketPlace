@@ -13,3 +13,12 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 });
+
+checkAuth().then((auth) => {
+  if (auth.loggedin) {
+    // Show logged in navbar with username
+    console.log("Welcome back, " + auth.username);
+  } else {
+    // Show login links
+  }
+});

@@ -1,31 +1,39 @@
 <?php
-// php/signin.php - FIXED VERSION
+// php/signin.php
 session_start();
-header('Content-Type: application/json');
-$connect = new mysqli('localhost', 'root', '', 'marketplace');
+include 'db.php';
 
-if ($connect->connect_error) {
-    echo json_encode(["status" => "error", "message" => "Database error"]);
+header('Content-Type: application/json');
+
+$data = json_decode(file_get_contents('php://input'), true);
+
+$email    = trim($data['email'] ?? '');
+$password = $data['password'] ?? '';
+
+if (empty($email) || empty($password)) {
+    echo json_encode(["status" => "error", "message" => "Email and password are required"]);
     exit;
 }
 
-$data = json_decode(file_get_contents('php://input'), true);
-$email = $data['email'] ?? '';
-$password = $data['password'] ?? '';
+try {
+    $stmt = $pdo->prepare("SELECT id, username, password FROM users WHERE email = ?");
+    $stmt->execute([$email]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-$stmt = $connect->prepare("SELECT id, username, password FROM users WHERE email = ?");
-$stmt->bind_param("s", $email);
-$stmt->execute();
-$result = $stmt->get_result();
-$user = $result->fetch_assoc();
-if ($user && password_verify($password, $user['password'])) {
-    $_SESSION['user_id'] = $user['id'];
-    $_SESSION['username'] = $user['username'];
-    echo json_encode(["status" => "success", "user" => $user['username']]);
-} else {
-    echo json_encode(["status" => "error", "message" => "Invalid email or password"]);
+    if ($user && password_verify($password, $user['password'])) {
+        $_SESSION['user_id']  = $user['id'];
+        $_SESSION['username'] = $user['username'];
+
+        echo json_encode([
+            "status"   => "success",
+            "message"  => "Login successful",
+            "username" => $user['username'],
+            "user"     => $user['username']     
+        ]);
+    } else {
+        echo json_encode(["status" => "error", "message" => "Invalid email or password"]);
+    }
+} catch (PDOException $e) {
+    echo json_encode(["status" => "error", "message" => "Database error"]);
 }
-
-$stmt->close();
-$connect->close();
 ?>
