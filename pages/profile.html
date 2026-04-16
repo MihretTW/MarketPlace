@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/profile.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/profile.css" />
   </head>
   <body>
     <div id="navbar-placeholder"></div>
@@ -25,14 +25,8 @@
       <button id="password">change password</button>
     </div>
 
-    <script>
-      // Load the navbar
-      fetch("navbar.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("navbar-placeholder").innerHTML = data;
-        })
-        .catch((error) => console.log("Navbar load error:", error));
-    </script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/navbar.js"></script>
+    <script src="../js/profile.js"></script>
   </body>
 </html>

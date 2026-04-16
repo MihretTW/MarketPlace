@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Post New Item - Market Place</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
     <!-- Navbar -->
@@ -53,9 +53,8 @@
           <input
             type="file"
             id="image"
-            name="image[]"
+            name="image"
             accept="image/*"
-            multiple
           />
           <small style="color: #888">JPG, PNG, or GIF only. Max 5MB.</small>
         </div>
@@ -66,7 +65,8 @@
       <div id="message" class="message"></div>
     </div>
 
-    <script src="js/navbar.js"></script>
-    <script src="js/post.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/navbar.js"></script>
+    <script src="../js/post.js"></script>
   </body>
 </html>

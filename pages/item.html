@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Item page</title>
-    <link rel="stylesheet" href="item-style.css" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="../css/item.css" />
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
     <div id="navbar-placeholder"></div>
@@ -21,9 +21,9 @@
         />
 
         <div class="item-info">
-          <h2>Title</h2>
-          <h3>Price: $100</h3>
-          <p>description</p>
+          <h2 id="itemTitle">Title</h2>
+          <h3 id="itemPrice">Price: $100</h3>
+          <p id="itemDescription">description</p>
         </div>
       </section>
 
@@ -35,35 +35,27 @@
         />
 
         <div>
-          <h3>Seller Name</h3>
+          <h3 id="sellerName">Seller Name</h3>
           <p>⭐ 4.5 Rating</p>
-          <button>Contact Seller</button>
+          <p id="sellerTelegram" style="display: none"></p>
+          <button id="contactSellerBtn" type="button">Contact Seller</button>
         </div>
       </section>
     </div>
 
     <section class="reviews">
-      <h3>Reviews</h3>
+      <h3>Comments</h3>
 
-      <div class="review">
-        <h4>User 1</h4>
-        <p>Good product</p>
-      </div>
+      <form id="commentForm">
+        <input id="commentText" type="text" placeholder="Write a comment..." required />
+        <button type="submit">Post</button>
+      </form>
 
-      <div class="review">
-        <h4>User 2</h4>
-        <p>Nice quality</p>
-      </div>
+      <div id="commentsList"></div>
     </section>
 
-    <script>
-      // Load the navbar
-      fetch("navbar.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("navbar-placeholder").innerHTML = data;
-        })
-        .catch((error) => console.log("Navbar load error:", error));
-    </script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/navbar.js"></script>
+    <script src="../js/item.js"></script>
   </body>
 </html>

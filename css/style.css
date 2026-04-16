@@ -36,13 +36,13 @@ body {
   display: inline;
 }
 
-.Dashbored li a {
+.Dashboard li a {
   text-decoration: none;
   color: #8fd3f4;
   transition: 0.3s;
 }
 
-.Dashbored li a:hover {
+.Dashboard li a:hover {
   color: #ff4ecd;
 }
 

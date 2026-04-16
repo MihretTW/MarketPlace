@@ -9,6 +9,9 @@ async function handleSignin(email, password) {
       JSON.stringify({
         username: result.username || result.user, // support both
         email: email,
+        phone: result.phone || "",
+        location: result.location || "",
+        telegram_username: result.telegram_username || "",
       }),
     );
 
@@ -17,6 +20,51 @@ async function handleSignin(email, password) {
     window.location.href = "index.html";
   } else {
     alert("❌ " + (result.message || "Login failed"));
+  }
+}
+
+async function apiCall(endpoint, payload) {
+  try {
+    const response = await fetch(`/MarketPlace/php/${endpoint}.php`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload || {}),
+    });
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return {
+      status: "error",
+      message: "Connection error. Make sure XAMPP is running.",
+    };
+  }
+}
+
+async function handleSignup(
+  username,
+  email,
+  password,
+  phone,
+  location,
+  telegram_username,
+) {
+  const result = await apiCall("signup", {
+    username,
+    email,
+    password,
+    phone,
+    location,
+    telegram_username,
+  });
+
+  if (result.status === "success") {
+    alert("✅ " + (result.message || "Account created successfully"));
+    window.location.href = "signin.html";
+  } else {
+    alert("❌ " + (result.message || "Signup failed"));
   }
 }
 
@@ -30,7 +78,7 @@ async function checkAuth() {
 
   // Also verify with server (more reliable)
   try {
-    const response = await fetch("php/check_auth.php");
+    const response = await fetch("/MarketPlace/php/check_auth.php");
     const data = await response.json();
 
     if (data.loggedin) {

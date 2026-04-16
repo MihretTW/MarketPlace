@@ -1,3 +1,13 @@
+document.addEventListener("DOMContentLoaded", function () {
+  if (typeof checkAuth === "function") {
+    checkAuth().then((auth) => {
+      if (!auth.loggedin) {
+        window.location.href = "signin.html";
+      }
+    });
+  }
+});
+
 document
   .getElementById("postForm")
   .addEventListener("submit", async function (e) {
@@ -9,7 +19,7 @@ document
     const formData = new FormData(this); // Handles file + text fields
 
     try {
-      const response = await fetch("php/add_item.php", {
+      const response = await fetch("/MarketPlace/php/add_item.php", {
         method: "POST",
         body: formData,
       });

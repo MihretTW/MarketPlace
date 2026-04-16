@@ -9,7 +9,16 @@ include 'db.php';
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-$sql = "SELECT id, name, price, description, image FROM items ORDER BY created_at DESC";
+$sql = "
+    SELECT
+        i.id,
+        i.name,
+        i.price,
+        i.description,
+        i.image AS image
+    FROM items i
+    ORDER BY i.id DESC
+";
 
 $result = $connect->query($sql);
 

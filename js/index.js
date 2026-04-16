@@ -1,9 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("itemsContainer");
 
-  fetch("php/get_items.php")
+  fetch("/MarketPlace/php/get_items.php")
     .then((response) => response.json())
     .then((items) => {
+      if (!Array.isArray(items)) {
+        const message = (items && items.message) || "Failed to load items";
+        container.innerHTML = `<p style="color:red;text-align:center;padding:30px;">${message}</p>`;
+        return;
+      }
+
       displayItems(items);
     })
     .catch((error) => {
@@ -26,7 +32,7 @@ function displayItems(items) {
     let imageSrc = "https://via.placeholder.com/300x200?text=No+Image";
 
     if (item.image && item.image !== "" && item.image !== null) {
-      imageSrc = `uploads/${item.image}`;
+      imageSrc = `/MarketPlace/uploads/${item.image}`;
     }
 
     const card = document.createElement("div");
