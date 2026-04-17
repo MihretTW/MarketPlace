@@ -135,12 +135,12 @@ CREATE TABLE IF NOT EXISTS comments (
   CONSTRAINT fk_comments_item FOREIGN KEY (item_id) REFERENCES items(id) ON DELETE CASCADE,
   CONSTRAINT fk_comments_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-How the App Works (User Flow)
-1. Sign Up
-Go to: pages/signup.html
-Fill:
-Username
+```
+## How the App Works (User Flow)
+#1. Sign Up
+- Go to: pages/signup.html
+- Fill:
+-- Username
 Phone
 Location
 Telegram Username
@@ -209,7 +209,7 @@ php/get_item.php
 Comments
 php/add_comment.php
 php/get_comments.php
-⚠️ Notes / Troubleshooting
+ Notes / Troubleshooting
 Images Not Showing
 
 Ensure folder exists:
@@ -229,21 +229,13 @@ Keep consistent:
 
 /MarketPlace/php/
 /MarketPlace/uploads/
-✅ Status
+
+#Status
 Core marketplace features implemented
 Authentication working
 Item posting & browsing working
 Telegram contact working
 Shared comments working
 Cart implemented (localStorage)
-
----
-
-## 🔍 What changed (important)
-
-- Added `#` → structure  
-- Added `-` → clean lists  
-- Wrapped code/paths with ``` ``` → readable  
-- Broke long text into sections  
 
 ---
