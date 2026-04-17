@@ -203,32 +203,23 @@ Stored securely (hashed)
 - php/add_comment.php
 - php/get_comments.php
  Notes / Troubleshooting
-Images Not Showing
-
-Ensure folder exists:
-
-MarketPlace/uploads/
-
-Make sure Apache has write permission.
-
-Comments Not Visible
-
-Test in browser:
-
-http://localhost/MarketPlace/php/get_comments.php?item_id=1
+#### Images Not Showing
+- Ensure folder exists: MarketPlace/uploads/
+- Make sure Apache has write permission.
+#### Comments Not Visible
+- Test in browser: http://localhost/MarketPlace/php/get_comments.php?item_id=1
 URL Casing
 
 Keep consistent:
-
 /MarketPlace/php/
 /MarketPlace/uploads/
 
-#Status
-Core marketplace features implemented
-Authentication working
-Item posting & browsing working
-Telegram contact working
-Shared comments working
-Cart implemented (localStorage)
+### Status
+- Core marketplace features implemented
+- Authentication working
+- Item posting & browsing working
+- Telegram contact working
+- Shared comments working
+- Cart implemented (localStorage)
 
 ---
