@@ -1,6 +1,6 @@
 # 🛒 MarketPlace (PHP + MySQL + XAMPP)
 
-## 📌 Overview
+##  Overview
 
 MarketPlace is a simple web-based marketplace application where users can:
 
@@ -15,7 +15,7 @@ MarketPlace is a simple web-based marketplace application where users can:
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 - **Frontend:** HTML, CSS, JavaScript  
 - **Backend:** PHP (MySQLi + Sessions)  
@@ -29,7 +29,7 @@ MarketPlace is a simple web-based marketplace application where users can:
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 MarketPlace/
 │
 ├── pages/ # HTML pages
@@ -58,7 +58,7 @@ MarketPlace/
 
 ---
 
-## ⚙️ Setup Guide
+##  Setup Guide
 
 ### 1. Install & Start XAMPP
 
@@ -79,7 +79,7 @@ Then open: [http://localhost/MarketPlace/pages/index.html]([url](http://localhos
 
 ---
 
-## 🗄 Database Setup (phpMyAdmin)
+##  Database Setup (phpMyAdmin)
 
 ### 1. Create Database
 
