@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const commentForm = document.getElementById("commentForm");
   const commentText = document.getElementById("commentText");
   const commentsList = document.getElementById("commentsList");
+  const addToCartBtn = document.getElementById("addToCartBtn");
 
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
@@ -17,22 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (titleEl) titleEl.textContent = "Item not found";
     if (descEl) descEl.textContent = "Missing item id.";
     return;
-  }
-
-  const commentsKey = `comments_item_${id}`;
-
-  function readComments() {
-    try {
-      const raw = localStorage.getItem(commentsKey);
-      const parsed = raw ? JSON.parse(raw) : [];
-      return Array.isArray(parsed) ? parsed : [];
-    } catch (e) {
-      return [];
-    }
-  }
-
-  function writeComments(comments) {
-    localStorage.setItem(commentsKey, JSON.stringify(comments || []));
   }
 
   function escapeHtml(str) {
@@ -44,27 +29,42 @@ document.addEventListener("DOMContentLoaded", function () {
       .replaceAll("'", "&#039;");
   }
 
-  function renderComments() {
+  function renderComments(comments) {
     if (!commentsList) return;
 
-    const comments = readComments();
-    if (comments.length === 0) {
+    const list = Array.isArray(comments) ? comments : [];
+    if (list.length === 0) {
       commentsList.innerHTML = "<p>No comments yet.</p>";
       return;
     }
 
-    commentsList.innerHTML = comments
-      .slice()
-      .reverse()
+    commentsList.innerHTML = list
       .map((c) => {
         const name = escapeHtml(c.username || "User");
-        const text = escapeHtml(c.text || "");
+        const text = escapeHtml(c.comment_text || "");
         return `<div class="review"><h4>${name}</h4><p>${text}</p></div>`;
       })
       .join("");
   }
 
-  renderComments();
+  async function loadComments() {
+    if (!commentsList) return;
+    try {
+      const res = await fetch(
+        `/MarketPlace/php/get_comments.php?item_id=${encodeURIComponent(id)}`,
+      );
+      const data = await res.json();
+      if (data.status === "success") {
+        renderComments(data.comments);
+      } else {
+        commentsList.innerHTML = `<p>${escapeHtml(data.message || "Could not load comments")}</p>`;
+      }
+    } catch (e) {
+      commentsList.innerHTML = "<p>Could not load comments.</p>";
+    }
+  }
+
+  loadComments();
 
   if (commentForm) {
     commentForm.addEventListener("submit", async function (e) {
@@ -86,16 +86,23 @@ document.addEventListener("DOMContentLoaded", function () {
       const text = (commentText && commentText.value ? commentText.value : "").trim();
       if (!text) return;
 
-      const savedUser = localStorage.getItem("user");
-      const user = savedUser ? JSON.parse(savedUser) : {};
-      const username = auth.username || user.username || "User";
+      try {
+        const res = await fetch("/MarketPlace/php/add_comment.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ item_id: parseInt(id, 10), comment_text: text }),
+        });
+        const data = await res.json();
 
-      const comments = readComments();
-      comments.push({ username, text, ts: Date.now() });
-      writeComments(comments);
-
-      if (commentText) commentText.value = "";
-      renderComments();
+        if (data.status === "success") {
+          if (commentText) commentText.value = "";
+          await loadComments();
+        } else {
+          alert(data.message || "Could not post comment");
+        }
+      } catch (err) {
+        alert("Connection error. Make sure XAMPP is running.");
+      }
     });
   }
 
@@ -150,6 +157,37 @@ document.addEventListener("DOMContentLoaded", function () {
         imageEl.onerror = function () {
           this.onerror = null;
           this.src = "https://via.placeholder.com/600x400?text=Image+Failed";
+        };
+      }
+
+      if (addToCartBtn) {
+        addToCartBtn.onclick = function () {
+          let cart = [];
+          try {
+            const raw = localStorage.getItem("cart");
+            cart = raw ? JSON.parse(raw) : [];
+            if (!Array.isArray(cart)) cart = [];
+          } catch (e) {
+            cart = [];
+          }
+
+          const cartItem = {
+            id: item.id,
+            name: item.name || "Item",
+            price: parseFloat(item.price || 0),
+            image: item.image || "",
+            qty: 1,
+          };
+
+          const existingIndex = cart.findIndex((x) => String(x.id) === String(cartItem.id));
+          if (existingIndex >= 0) {
+            cart[existingIndex].qty = (parseInt(cart[existingIndex].qty || 1, 10) || 1) + 1;
+          } else {
+            cart.push(cartItem);
+          }
+
+          localStorage.setItem("cart", JSON.stringify(cart));
+          alert("Added to cart!");
         };
       }
     })

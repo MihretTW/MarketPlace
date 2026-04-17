@@ -84,7 +84,11 @@ async function checkAuth() {
     if (data.loggedin) {
       return {
         loggedin: true,
+        user_id: data.user_id,
         username: data.username,
+        phone: data.phone || "",
+        location: data.location || "",
+        telegram_username: data.telegram_username || "",
       };
     } else {
       localStorage.removeItem("user"); // Clean up invalid session
@@ -96,6 +100,9 @@ async function checkAuth() {
     return {
       loggedin: true,
       username: user.username,
+      phone: user.phone || "",
+      location: user.location || "",
+      telegram_username: user.telegram_username || "",
     };
   }
 }

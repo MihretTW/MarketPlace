@@ -25,11 +25,11 @@ if ($id > 0) {
 }
 
 if ($category) {
-    $stmt = $connect->prepare("SELECT items.*, users.username, users.telegram_username FROM items JOIN users ON items.user_id = users.id WHERE category = ? ORDER BY created_at DESC");
+    $stmt = $connect->prepare("SELECT items.*, users.username, users.telegram_username FROM items JOIN users ON items.user_id = users.id WHERE category = ? ORDER BY items.id DESC");
     $stmt->bind_param("s", $category);
     $stmt->execute();
 } else {
-    $stmt = $connect->prepare("SELECT items.*, users.username, users.telegram_username FROM items JOIN users ON items.user_id = users.id ORDER BY created_at DESC");
+    $stmt = $connect->prepare("SELECT items.*, users.username, users.telegram_username FROM items JOIN users ON items.user_id = users.id ORDER BY items.id DESC");
     $stmt->execute();
 }
 
