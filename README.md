@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS comments (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 ```
 ## How the App Works (User Flow)
-# 1. Sign Up
+### 1. Sign Up
 - Go to: pages/signup.html
 - Fill:
  Username,
@@ -147,38 +147,38 @@ Telegram Username,
 Email,
 Password
 Data is saved in the users table
-#2. Sign In
+### 2. Sign In
 - Go to: pages/signin.html
 - After login:
  - Session created ($_SESSION)
  - Data stored in localStorage
  - Navbar updates automatically
-#3. Post an Item
+### 3. Post an Item
 - Go to: pages/post.html
 - Only logged-in users can post
 - Image upload is optional
 - Images stored in uploads/
-#4. Browse Items
+### 4. Browse Items
 - Homepage displays items
 - Click item → opens:
 - pages/item.html?id=ITEM_ID
-#5. Item Details + Seller Contact
+### 5. Item Details + Seller Contact
 - View item details and image
 - See seller name
 - Click Contact Seller
 - Telegram link format: https://t.me/username
-#6. Comments (Visible to All Users)
+### 6. Comments (Visible to All Users)
 - Users can post comments
 - Stored in comments table
 - Visible to all users
-#7. Cart
+### 7. Cart
 - Add items from item page
 - Stored in localStorage
 - Cart page: pages/cart.html
 Supports:
 Remove item,
 Clear cart
-#8. Profile + Change Password
+### 8. Profile + Change Password
 View:
 Username,
 Phone,
@@ -189,17 +189,17 @@ Change password:
 Enter old + new password
 Stored securely (hashed)
 🔌 Backend Endpoints
-#Auth
+### Auth
 - php/signup.php
 - php/signin.php
 - php/check_auth.php
 - php/logout.php
 - php/change_password.php
-#Items
+### Items
 - php/add_item.php
 - php/get_items.php
 - php/get_item.php
-#Comments
+### Comments
 - php/add_comment.php
 - php/get_comments.php
  Notes / Troubleshooting
