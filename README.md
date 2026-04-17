@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS comments (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 ```
 ## How the App Works (User Flow)
-#1. Sign Up
+# 1. Sign Up
 - Go to: pages/signup.html
 - Fill:
  Username,
