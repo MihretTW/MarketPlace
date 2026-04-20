@@ -1,4 +1,4 @@
-# 🛒 MarketPlace (PHP + MySQL + XAMPP)
+# 🛒 MarketPlace
 
 ##  Overview
 
