@@ -15,7 +15,7 @@ body {
 
 /* Title */
 .name-of-site {
-  text-align: center;
+  text-align: left;
   color: #ff4ecd;
   font-size: 40px;
   margin: 20px 0;
@@ -31,6 +31,15 @@ body {
   padding: 0;
   margin-right: 30px;
 }
+.logo img{
+  position: absolute;
+  left: 30px;
+  top: 5px;
+  width: 100px;
+  height: auto;
+  border-radius: 50%;
+}
+
 
 .Dashboard li {
   display: inline;
