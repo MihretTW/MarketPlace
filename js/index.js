@@ -50,3 +50,4 @@ function displayItems(items) {
     container.appendChild(card);
   });
 }
+
